@@ -1,5 +1,11 @@
 # 🏨 Hotel Chain Management — Data Warehouse Project
 
+![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+
 A production-grade, end-to-end **Data Warehouse & Analytics** solution built on **Snowflake**, processing 119,390 hotel booking records using **Medallion Architecture** and a fully normalized **Star Schema**.
 
 ---
@@ -51,6 +57,14 @@ DIM_AGENT ──── FACT_BOOKINGS ──── DIM_CUSTOMER
 
 ---
 
+## 🗂️ Entity Relationship Diagram
+
+![ERD Diagram](docs/ERD.PNG)
+
+> 📎 Interactive version: [docs/ERD.html](docs/ERD.html)
+
+---
+
 ## 🚀 Tech Stack
 
 | Tool | Purpose |
@@ -89,6 +103,8 @@ hotel-chain-dwh/
 │   ├── ERD.PNG                     # Entity Relationship Diagram
 │   └── ERD.html                    # Interactive ERD
 │
+├── .env.example                    # Snowflake credentials template
+├── requirements.txt                # Python dependencies
 └── README.md
 ```
 
@@ -108,9 +124,20 @@ Five business intelligence queries built on the Gold layer:
 
 ## 🛠️ How to Run
 
-**Prerequisites:** Snowflake account, Python 3.8+, Streamlit
+**Prerequisites:** Snowflake account, Python 3.8+
 
-**Step 1 — Run SQL scripts in order:**
+**Step 1 — Install dependencies:**
+```bash
+pip install -r requirements.txt
+```
+
+**Step 2 — Configure credentials:**
+```bash
+cp .env.example .env
+# Open .env and fill in your Snowflake credentials
+```
+
+**Step 3 — Run SQL scripts in order:**
 ```sql
 -- Run in Snowflake worksheet in this exact order:
 01_infrastructure_setup.sql
@@ -121,14 +148,13 @@ Five business intelligence queries built on the Gold layer:
 06_analytical_queries.sql
 ```
 
-**Step 2 — Upload dataset to Snowflake stage:**
+**Step 4 — Upload dataset to Snowflake stage:**
 ```sql
 PUT file://datasets/hotel_bookings.csv @bronze.hotel_stage;
 ```
 
-**Step 3 — Run Streamlit dashboard:**
+**Step 5 — Run Streamlit dashboard:**
 ```bash
-pip install streamlit pandas snowflake-connector-python
 streamlit run dashboard/app.py
 ```
 
