@@ -137,4 +137,5 @@ streamlit run dashboard/app.py
 ## 👤 Author
 
 **Shahzaman Jalil**
-[![GitHub](https://img.shields.io/badge/GitHub-Shahzaman--Jalil-181717?logo=github)](https://github.com/Shahzaman-Jalil)
+
+[![GitHub](https://img.shields.io/badge/GitHub-Shahzaman--Jalil-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Shahzaman-Jalil)
